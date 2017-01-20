@@ -1,10 +1,10 @@
-name := "EventHubsKafkaPublisher"
+name := "SparkDemo"
 
 version := "1.0"
 
 scalaVersion := "2.11.8"
 
-val sparkVersion = "2.0.2"
+val sparkVersion = "1.6.1"
 
 libraryDependencies ++=
     Seq(
@@ -14,13 +14,9 @@ libraryDependencies ++=
       "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
       "org.apache.spark" %% "spark-streaming" % sparkVersion % "provided",
       "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
-      "org.apache.spark" %% "spark-streaming-kafka-0-10" % "2.0.2",
       "com.typesafe" % "config" % "1.2.1",
-      "org.rogach" %% "scallop" % "2.0.2",
-      "com.microsoft.azure" % "azure-eventhubs" % "0.9.0"
+      "org.rogach" %% "scallop" % "2.0.2"
     )
-
-mainClass in assembly := Some("onextent.tools.kafka.KafkaTools")
 
 assemblyMergeStrategy in assembly := {
   case x if x.endsWith("io.netty.versions.properties") => MergeStrategy.first
