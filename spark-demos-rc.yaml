@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: spark-demos-rc
+spec:
+  replicas: 1
+  selector:
+    component: spark-demos
+  template:
+    metadata:
+      labels:
+        component: spark-demos
+    spec:
+      imagePullSecrets:
+        - name: bitsdock
+      containers:
+      - name: spark-demos
+        image: navicore/spark-demos
+        imagePullPolicy: Always
+        env:
+          - name: DRIVER_VAR
+            value: "Amy"
+          - name: DRIVER_PASSENGER_VAR
+            value: "Joe"
+        args: ["--deploy-mode", "client", "--master", "spark://ed162-spark-master:7077", "--conf", "spark.executorEnv.EXECUTOR_VAR=Artie", "--class", "onextent.sparkdemos.HelloEnv", "/app/target/scala-2.11/SparkDemo-assembly-1.0.jar"]
+        ports:
+          - name: sparkui
+            containerPort: 4040
+      restartPolicy: Always
+
