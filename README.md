@@ -1,3 +1,8 @@
+<!-- ghmig:moved -->
+> **This repository has moved to [https://git.navicore.tech/navicore/spark-demos](https://git.navicore.tech/navicore/spark-demos).**
+>
+> The GitHub copy is archived and no longer maintained.
+
 # spark-demos
 a scratch pad of spark utils and examples
 
@@ -7,4 +12,3 @@ sbt assembly && kubectl exec -i bdas-spark-master-controller-yu4ok -- /bin/bash 
 ```
 
 note, the executor code is looking up `EXECUTOR_VAR`
-
